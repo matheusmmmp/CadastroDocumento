@@ -1,0 +1,56 @@
+﻿@page "{id:int}"
+
+@model CadastroDocumentos.Pages.Documents.DetailsModel
+
+@{
+	ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+	<h4>DocumentoModel</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DocumentoModel.Code)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DocumentoModel.Code)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DocumentoModel.Title)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DocumentoModel.Title)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DocumentoModel.Process)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DocumentoModel.Process)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DocumentoModel.Category)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DocumentoModel.Category)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DocumentoModel.FileName)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DocumentoModel.FileName)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.DocumentoModel.FilePath)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.DocumentoModel.FilePath)
+		</dd>
+	</dl>
+</div>
+<div>
+	<a asp-page="./Edit" asp-route-id="@Model.DocumentoModel.ID">Edit</a> |
+	<a asp-page="./Index">Back to List</a>
+</div>

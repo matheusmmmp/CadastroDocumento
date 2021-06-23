@@ -1,0 +1,53 @@
+﻿@page
+@model CadastroDocumentos.Pages.Documents.CreateModel
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<p class="text-danger">@Model.ErrorMessage</p>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="DocumentoModel.Code" class="control-label"></label>
+				<input asp-for="DocumentoModel.Code" class="form-control" />
+				<span asp-validation-for="DocumentoModel.Code" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="DocumentoModel.Title" class="control-label"></label>
+				<input asp-for="DocumentoModel.Title" class="form-control" />
+				<span asp-validation-for="DocumentoModel.Title" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="DocumentoModel.Process" class="control-label"></label>
+				<input asp-for="DocumentoModel.Process" class="form-control" />
+				<span asp-validation-for="DocumentoModel.Process" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="DocumentoModel.Category" class="control-label"></label>
+				<input asp-for="DocumentoModel.Category" class="form-control" />
+				<span asp-validation-for="DocumentoModel.Category" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="file" name="uploadFile" />
+				<span asp-validation-for="DocumentoModel.FilePath" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@Html.ValidationSummary(true)
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

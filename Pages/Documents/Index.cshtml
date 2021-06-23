@@ -1,0 +1,86 @@
+﻿@page
+@model CadastroDocumentos.Pages.Documents.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Documentos</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success btn-sm float-right">Criar um Documento</a>
+</p>
+<form asp-page="./Index" method="get">
+	<div class="form-actions no-color">
+		<p>
+			Encontre por:
+			<input type="text" name="SearchString" value="@Model.CurrentFilter" />
+			<input type="submit" value="Search" class="btn btn-default" /> |
+			<a asp-page="./Index">Voltar para lista completa</a>
+		</p>
+	</div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+			<th>
+				<a asp-page="./Index" asp-route-sortOrder="@Model.CodeSort">
+					@Html.DisplayNameFor(model => model.DocumentoModel[0].Code)
+				</a>
+			</th>
+			<th>
+				<a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+					@Html.DisplayNameFor(model => model.DocumentoModel[0].Title)
+				</a>
+			</th>
+			<th>
+				<a asp-page="./Index" asp-route-sortOrder="@Model.ProcessSort">
+					@Html.DisplayNameFor(model => model.DocumentoModel[0].Process)
+				</a>
+			</th>
+			<th>
+				<a asp-page="./Index" asp-route-sortOrder="@Model.CategorySort">
+					@Html.DisplayNameFor(model => model.DocumentoModel[0].Category)
+				</a>
+			</th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentoModel[0].FileName)
+            </th>
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.DocumentoModel) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Code)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Process)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Category)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.FileName)				
+			</td>
+			<td>
+				<a href="./images/@item.FileName" class="btn btn-secondary btn-sm">Visualizar</a>
+			</td>
+			<td>
+				<a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary">Editar</a>
+			</td>
+			<td>
+				<a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-info">Detalhes</a>
+			</td>
+			<td>
+				<a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Deletar</a>
+			</td>
+		</tr>
+}
+    </tbody>
+</table>
